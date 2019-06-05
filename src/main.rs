@@ -23,6 +23,7 @@
  */
 
 use std::{env, process};
+use rand::prelude::ThreadRng;
 use rand::Rng;
 
 fn main() {
@@ -67,17 +68,17 @@ fn get_password_characters(arguments: &Vec<String>) -> Vec<char> {
 }
 
 fn generate_password(length: u32, characters: &Vec<char>) -> String {
+	let mut random = rand::thread_rng();
 	let password_characters_length = characters.len() as u32;
 	let mut password = String::new();
 	for _index in 0..length {
-		let character_index = get_random_number(0, password_characters_length);
+		let character_index = get_random_number(&mut random, 0, password_characters_length);
 		let character = characters[character_index];
 		password.push(character);
 	}
 	return password;
 }
 
-fn get_random_number(first: u32, second: u32) -> usize {
-	let mut rng = rand::thread_rng();
-	return rng.gen_range(first, second) as usize;
+fn get_random_number(random: &mut ThreadRng, first: u32, second: u32) -> usize {
+	return random.gen_range(first, second) as usize;
 }
