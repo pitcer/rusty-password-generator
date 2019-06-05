@@ -30,14 +30,14 @@ fn main() {
 	check_argument(&arguments);
 	let password_length = get_password_length(&arguments);
 	let password_characters = get_password_characters(&arguments);
-	let password = generate_password(password_length, password_characters);
-	println!("Password: {}", password);
+	let password = generate_password(password_length, &password_characters);
+	println!("Password: {}", &password);
 }
 
 fn get_arguments() -> Vec<String> {
 	let args = env::args();
 	let mut arguments: Vec<_> = args.collect();
-	arguments.remove(0);
+	&arguments.remove(0);
 	return arguments;
 }
 
@@ -66,7 +66,7 @@ fn get_password_characters(arguments: &Vec<String>) -> Vec<char> {
 	return characters;
 }
 
-fn generate_password(length: u32, characters: Vec<char>) -> String {
+fn generate_password(length: u32, characters: &Vec<char>) -> String {
 	let password_characters_length = characters.len() as u32;
 	let mut password = String::new();
 	for _index in 0..length {
