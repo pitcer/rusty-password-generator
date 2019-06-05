@@ -1,0 +1,12 @@
+[package]
+name = "rusty-password-generator"
+description = "Simple password generator"
+version = "0.1.0"
+authors = ["Piotr Dobiech <pitcer@protonmail.com>"]
+edition = "2018"
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/pitcer/rusty-password-generator"
+
+[dependencies]
+rand = "0.6.5"
